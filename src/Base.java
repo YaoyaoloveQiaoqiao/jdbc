@@ -5,19 +5,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+
 public class Base {
-	public static void main(String args[]) throws SQLException{
-		test();
+	public static void main(String args[]) throws Exception{
+		QQLogin w = new QQLogin() ;
+        w.setVisible(true);
 	}
-	static void template(){
+	
+	static void template() throws Exception{
 		Connection conn=null;
 		Statement st=null;
 		ResultSet rs=null;
-		try{
-			conn=jdbc
+		try {
+			
+		    conn=jdbcUtils.getConnection();
+			st=conn.createStatement();
+			rs=st.executeQuery("select * from exam_student");
+			while(rs.next()){
+				System.out.println(rs.getObject(1)+"\t"+rs.getObject(2));
+			}
+		} finally{
+			jdbcUtils.free(rs, st, conn);
+		}
 		}
 		
-	}
+		
+	
 	static void test() throws SQLException{
 		//1Ч§ЖЏзЂВс
 		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
