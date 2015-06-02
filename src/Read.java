@@ -29,7 +29,7 @@ public class Read extends JFrame{
 		
 		
 		//布置小面板
-		
+		JPanel panSmall=new JPanel();
 		panSmall.add(btnSend) ;
 		
 		//布置大面板
@@ -38,8 +38,8 @@ public class Read extends JFrame{
 		//布置窗体
  		this.setLayout(new BorderLayout());
  		
- 		this.add(panBig, BorderLayout.NORTH) ;
- 		this.add(panCon, BorderLayout.CENTER) ;
+ 		this.add(panSmall, BorderLayout.NORTH) ;
  		
+	}	
 
 }

@@ -1,10 +1,16 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JFrame;
 
-public class CRUD {
+
+
+
+public class CRUD extends JFrame  implements ActionListener {
 	public static void main(String args[]) throws SQLException{
 		//read();
 		//create();
@@ -75,4 +81,10 @@ static void delete() throws SQLException{
 		jdbcUtils.free(rs, st, conn);
 	}
 }
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
+	}
 }
+

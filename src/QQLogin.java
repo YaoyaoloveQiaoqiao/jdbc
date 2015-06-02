@@ -117,6 +117,10 @@ public class QQLogin extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getActionCommand().equals("–≈œ¢≤È—Ø")){
+			Read r=new Read("read");
+	    	r.setVisible(true);
+	    	this.setVisible(false);
+		}
 	}
 }
