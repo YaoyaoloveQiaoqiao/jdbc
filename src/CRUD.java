@@ -1,6 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,30 +10,32 @@ import javax.swing.JFrame;
 
 public class CRUD extends JFrame implements ActionListener {
 	public static void main(String args[]) throws SQLException {
-		//read();
+		// read("2");
 		// create();
 		// update();
 		// delete();
 	}
 
-	static void read(String read) throws SQLException {
+	public  void read(String read) throws SQLException {
 		Connection conn = null;
-		Statement st = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		//String read = "select * from student";
-		
+
+		// String read = "select * from student";
+
 		try {
 
 			conn = jdbcUtils.getConnection();
-			st = conn.createStatement();
-			rs = st.executeQuery(read);
+			String sql = "select * from student where snum=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, read);
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				System.out.println(rs.getObject("snum") + "\t"
 						+ rs.getObject("sname"));
 			}
 		} finally {
-			jdbcUtils.free(rs, st, conn);
+			jdbcUtils.free(rs, ps, conn);
 		}
 	}
 
