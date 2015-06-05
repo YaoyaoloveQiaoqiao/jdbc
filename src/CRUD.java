@@ -16,10 +16,11 @@ public class CRUD extends JFrame implements ActionListener {
 		// delete();
 	}
 
-	public  void read(String read) throws SQLException {
+	public ResultSet read(String sqlRead) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		String result = null;
 
 		// String read = "select * from student";
 
@@ -28,15 +29,45 @@ public class CRUD extends JFrame implements ActionListener {
 			conn = jdbcUtils.getConnection();
 			String sql = "select * from student where snum=?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, read);
+			ps.setString(1, sqlRead);
 			rs = ps.executeQuery();
-			while (rs.next()) {
-				System.out.println(rs.getObject("snum") + "\t"
-						+ rs.getObject("sname"));
+			while(rs.next()){
+				rs.getObject(0)+""
 			}
+			
+
+			// result=rs.getObject("snum") + "%"
+			// + rs.getObject("sname");
+
 		} finally {
 			jdbcUtils.free(rs, ps, conn);
 		}
+		return rs;
+	}
+
+	static void selectStudent(String sqlRead) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String result = null;
+
+		// String read = "select * from student";
+
+		try {
+
+			conn = jdbcUtils.getConnection();
+			String sql = "select * from student where snum=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, sqlRead);
+			rs = ps.executeQuery();
+
+			// result=rs.getObject("snum") + "%"
+			// + rs.getObject("sname");
+
+		} finally {
+			jdbcUtils.free(rs, ps, conn);
+		}
+		return rs;
 	}
 
 	static void create() throws SQLException {

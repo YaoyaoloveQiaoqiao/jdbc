@@ -92,11 +92,11 @@ public class QQLogin extends JFrame implements ActionListener {
 		panButton.add(btnReset);
 
 		// 布置内容和按钮面板
-		JPanel texButton = new JPanel();
-		texButton.setLayout(new BorderLayout());
-
-		texButton.add(panInput, BorderLayout.CENTER);
-		texButton.add(panButton_South, BorderLayout.SOUTH);
+//		JPanel texButton = new JPanel();
+//		texButton.setLayout(new BorderLayout());
+//
+//		texButton.add(panInput, BorderLayout.CENTER);
+//		texButton.add(panButton_South, BorderLayout.SOUTH);
 		
 		// 布置窗体
 		this.setLayout(new BorderLayout());
@@ -104,7 +104,7 @@ public class QQLogin extends JFrame implements ActionListener {
 		this.add(panButton, BorderLayout.NORTH);
 		// this.add(panInput , BorderLayout.) ;
 		// this.add(panButton_South,BorderLayout.SOUTH);
-		this.add(texButton, BorderLayout.CENTER);
+		this.add(panInput, BorderLayout.CENTER);
 
 	}
 
