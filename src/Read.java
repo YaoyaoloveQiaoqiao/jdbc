@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
@@ -36,7 +37,7 @@ public class Read extends JFrame implements ActionListener {
 		this.setTitle(title);
 
 		// new一大堆组件
-		JButton btnSend = new JButton("查询");
+		JButton btnQuery = new JButton("查询");
 		// JButton btnWrite = new JButton("录入") ;
 		JLabel labNum = new JLabel("学号：");
 		JLabel labName = new JLabel("姓名：");
@@ -48,7 +49,7 @@ public class Read extends JFrame implements ActionListener {
 		
 
 		// 注册事件
-		btnSend.addActionListener(this);
+		btnQuery.addActionListener(this);
 
 		// 布置小面板
 		JPanel panInput = new JPanel();
@@ -76,7 +77,7 @@ public class Read extends JFrame implements ActionListener {
 		
 		// panSmall.add(btnWrite);
 		panSmall.add(txtNum);
-		panSmall.add(btnSend);
+		panSmall.add(btnQuery);
 
 		// 布置窗体
 		this.setLayout(new BorderLayout());
@@ -93,7 +94,7 @@ public class Read extends JFrame implements ActionListener {
 
 		// System.out.println("click");
 		if (e.getActionCommand().equals("查询")) {
-
+            String num=txtNum.getText();
 			txtSex.setText("hahahha");
 			
 		}

@@ -32,7 +32,7 @@ public class CRUD extends JFrame implements ActionListener {
 			ps.setString(1, sqlRead);
 			rs = ps.executeQuery();
 			while(rs.next()){
-				rs.getObject(0)+""
+				rs.getObject(0);
 			}
 			
 
@@ -45,7 +45,7 @@ public class CRUD extends JFrame implements ActionListener {
 		return rs;
 	}
 
-	static void selectStudent(String sqlRead) {
+	static void selectStudent(String sqlRead) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -67,7 +67,7 @@ public class CRUD extends JFrame implements ActionListener {
 		} finally {
 			jdbcUtils.free(rs, ps, conn);
 		}
-		return rs;
+		
 	}
 
 	static void create() throws SQLException {

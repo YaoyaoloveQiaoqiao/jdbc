@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.redknot.data.jdbcUtils;
+import com.redknot.view.QQLogin;
+
 
 
 public class Base {
