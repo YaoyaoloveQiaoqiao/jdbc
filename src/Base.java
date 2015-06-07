@@ -11,7 +11,7 @@ import com.redknot.view.QQLogin;
 
 public class Base {
 	public static void main(String args[]) throws Exception{
-		QQLogin w = new QQLogin() ;
+	    Full w = new Full() ;
         w.setVisible(true);
 	}
 	
