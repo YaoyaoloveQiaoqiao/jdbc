@@ -36,7 +36,7 @@ public class Base {
 	
 	static void test() throws SQLException{
 		//1驱动注册
-		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+		DriverManager.registerDriver(new com.mysql.jdbc.Driver());//miao
 		//2建立连接
 		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/student","root","0314www");
 		//3创建语句
