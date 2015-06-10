@@ -64,10 +64,11 @@ public class SQL{
 		return s;
 	}
 	
-	 public static void createStudent(String num,String name,String sex,String address,String phone,String major) throws SQLException {
+	 public static int createStudent(String num,String name,String sex,String address,String phone,String major) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		int i;
 		try {
 
 			conn = jdbcUtils.getConnection();
@@ -80,12 +81,12 @@ public class SQL{
 			ps.setString(4, address);
 			ps.setString(5, phone);
 			ps.setString(6, major);
-			int i = ps.executeUpdate();
+			 i = ps.executeUpdate();
 			System.out.println("i=" + i);
 		} finally {
 			jdbcUtils.free(rs, ps, conn);
 		}
-		
+		return i;
 	}
 
 	static void update() throws SQLException {

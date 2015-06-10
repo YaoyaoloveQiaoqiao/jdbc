@@ -24,6 +24,7 @@ public class Student {
 
 	}
 	
+	
 	public String getSname() {
 		return sname;
 	}

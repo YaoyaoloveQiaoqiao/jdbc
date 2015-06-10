@@ -114,5 +114,10 @@ public class Full extends JFrame implements ActionListener {
 			readMes.setVisible(true);
 			this.setVisible(false);
 		}
+		else if(e.getActionCommand().equals("信息录入")){
+			Write writeMes=new Write("信息录入");
+			writeMes.setVisible(true);
+			this.setVisible(false);
+		}
 	}
 }

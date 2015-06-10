@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -34,7 +35,7 @@ public class Write extends JFrame implements ActionListener {
 		this.setTitle(title);
 
 		// new一大堆组件
-		JButton btnQuery = new JButton("录入");
+		JButton btnWrite = new JButton("录入");
 		JLabel labNum = new JLabel("学号：");
 		JLabel labName = new JLabel("姓名：");
 		JLabel labSex = new JLabel("性别：");
@@ -43,7 +44,7 @@ public class Write extends JFrame implements ActionListener {
 		JLabel labMajor = new JLabel("专业：");
 		
 		// 注册事件
-		btnQuery.addActionListener(this);
+		btnWrite.addActionListener(this);
 
 		// 布置小面板
 		JPanel panInput = new JPanel();
@@ -70,7 +71,7 @@ public class Write extends JFrame implements ActionListener {
 		// panSmall.add(btnWrite);
 		panSmall.add(labNum);
 		panSmall.add(txtNum);
-		panSmall.add(btnQuery);
+		panSmall.add(btnWrite);
 
 		// 布置窗体
 		this.setLayout(new BorderLayout());
@@ -88,20 +89,26 @@ public class Write extends JFrame implements ActionListener {
 		// System.out.println("click");
 		if (e.getActionCommand().equals("录入")) {
             String num=txtNum.getText();
-            SQL sqlRead=new SQL();
+            String name=txtName.getText();
+            String sex=txtSex.getText();
+            String address=txtAddress.getText();
+            String phone=txtPhone.getText();
+            String major=txtMajor.getText();
+            
+            
+            SQL sqlWrite=new SQL();
             Student s1=new Student();
             try {
-				s1=sqlRead.selectStudent(num);
+				int i=sqlWrite.createStudent(num,name,sex,address,phone,major);
+				if( i==1){
+					JOptionPane.showMessageDialog(null, "插入成功", "提示", JOptionPane.ERROR_MESSAGE);
+				}
             	//sqlRead.createStudent("5yao","yaoyao","female","memeda","13343564","software");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-            txtName.setText(s1.getSname());
-            txtSex.setText(s1.getSsex());
-            txtAddress.setText(s1.getSaddress());
-            txtPhone.setText(s1.getSphone());
-            txtMajor.setText(s1.getSmajor());
+           
           
 			
 		}
