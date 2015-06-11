@@ -22,7 +22,7 @@ public class SQL{
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		createStudent("5","yao","fem","mem","13343564","software");
+	//	updateStudent("'4'","'yao'","'fem'","'mem'","'13343564'","'software'");
 	}
 	
 	public Student selectStudent(String num) throws SQLException{
@@ -73,7 +73,7 @@ public class SQL{
 
 			conn = jdbcUtils.getConnection();
 			String sql = "insert into student(snum,sname,ssex,saddress,sphone,smajor)values(?,?,?,?,?,?) ";
-		//	'?','?','?','?','?','?'
+	
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, num);
 			ps.setString(2, name);
@@ -82,27 +82,35 @@ public class SQL{
 			ps.setString(5, phone);
 			ps.setString(6, major);
 			 i = ps.executeUpdate();
-			System.out.println("i=" + i);
+			//System.out.println("i=" + i);
 		} finally {
 			jdbcUtils.free(rs, ps, conn);
 		}
 		return i;
 	}
 
-	static void update() throws SQLException {
+	public static void updateStudent(String num,String name,String sex,String address,String phone,String major) throws SQLException {
 		Connection conn = null;
-		Statement st = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
+		int i;
 		try {
 
 			conn = jdbcUtils.getConnection();
-			st = conn.createStatement();
-			String sql = "update exam_student set score=score+1";
-			int i = st.executeUpdate(sql);
+			String sql = "update student set sname=?,ssex=?,saddress=?,sphone=?,smajor=? where snum=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(6, num);
+			ps.setString(1, name);
+			ps.setString(2, sex);
+			ps.setString(3, address);
+			ps.setString(4, phone);
+			ps.setString(5, major);
+			 i = ps.executeUpdate();
 			System.out.println("i=" + i);
 		} finally {
-			jdbcUtils.free(rs, st, conn);
+			jdbcUtils.free(rs, ps, conn);
 		}
+		
 	}
 
 	static void delete() throws SQLException {

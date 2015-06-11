@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import com.redknot.data.SQL;
 import com.redknot.modle.Student;
 
-public class Write extends JFrame implements ActionListener {
+public class Update extends JFrame implements ActionListener {
 
 	JTextField txtNum = new JTextField();
 	JTextField txtName = new JTextField();
@@ -28,15 +28,16 @@ public class Write extends JFrame implements ActionListener {
 	JTextField txtMajor = new JTextField();
     JTextField txtUser = new JTextField();
 
-	public Write(String title) {
+	public Update(String title) {
 		// 设置窗体属性
 		this.setSize(400, 500);
 		this.setLocation(100, 100);
 		this.setTitle(title);
 
 		// new一大堆组件
-		JButton btnWrite = new JButton("录入");
-		JLabel labNum = new JLabel("学号：");
+		JButton btnQuery = new JButton("查询");
+		JButton btnSave = new JButton("保存");
+		JLabel labNum = new JLabel("请输入要修改学生学号：");
 		JLabel labName = new JLabel("姓名：");
 		JLabel labSex = new JLabel("性别：");
 		JLabel labAddress = new JLabel("地址：");
@@ -44,7 +45,7 @@ public class Write extends JFrame implements ActionListener {
 		JLabel labMajor = new JLabel("专业：");
 		
 		// 注册事件
-		btnWrite.addActionListener(this);
+		btnQuery.addActionListener(this);
 
 		// 布置小面板
 		JPanel panInput = new JPanel();
@@ -71,7 +72,9 @@ public class Write extends JFrame implements ActionListener {
 		// panSmall.add(btnWrite);
 		panSmall.add(labNum);
 		panSmall.add(txtNum);
-		panSmall.add(btnWrite);
+		panSmall.add(btnQuery);
+		panSmall.add(btnSave);
+		
 
 		// 布置窗体
 		this.setLayout(new BorderLayout());
@@ -87,30 +90,45 @@ public class Write extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 
 		// System.out.println("click");
-		if (e.getActionCommand().equals("录入")) {
+		if (e.getActionCommand().equals("查询")) {
             String num=txtNum.getText();
-            String name=txtName.getText();
-            String sex=txtSex.getText();
-            String address=txtAddress.getText();
-            String phone=txtPhone.getText();
-            String major=txtMajor.getText();
-            
-            
-            SQL sqlWrite=new SQL();
-          
+            SQL sqlRead=new SQL();
+            Student s1=new Student();
             try {
-				int i=sqlWrite.createStudent(num,name,sex,address,phone,major);
-				if( i==1){
-					JOptionPane.showMessageDialog(null, "录入成功", "提示", JOptionPane.INFORMATION_MESSAGE);
-				}
+				s1=sqlRead.selectStudent(num);
             	//sqlRead.createStudent("5yao","yaoyao","female","memeda","13343564","software");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-           
+            txtName.setText(s1.getSname());
+            txtSex.setText(s1.getSsex());
+            txtAddress.setText(s1.getSaddress());
+            txtPhone.setText(s1.getSphone());
+            txtMajor.setText(s1.getSmajor());
           
 			
+		}
+		if(e.getActionCommand().equals("保存")){
+			    String num=txtNum.getText();
+	            String name=txtName.getText();
+	            String sex=txtSex.getText();
+	            String address=txtAddress.getText();
+	            String phone=txtPhone.getText();
+	            String major=txtMajor.getText();
+	        
+	            SQL sqlWrite=new SQL();
+	            
+	            try {
+				        sqlWrite.updateStudent(num,name,sex,address,phone,major);
+					
+						JOptionPane.showMessageDialog(null, "修改成功", "提示", JOptionPane.INFORMATION_MESSAGE);
+					
+	            	//sqlRead.createStudent("5yao","yaoyao","female","memeda","13343564","software");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		}
 	}
 
