@@ -46,6 +46,7 @@ public class Update extends JFrame implements ActionListener {
 		
 		// 注册事件
 		btnQuery.addActionListener(this);
+		btnSave.addActionListener(this);
 
 		// 布置小面板
 		JPanel panInput = new JPanel();
@@ -110,6 +111,7 @@ public class Update extends JFrame implements ActionListener {
 			
 		}
 		if(e.getActionCommand().equals("保存")){
+			System.out.println("success");
 			    String num=txtNum.getText();
 	            String name=txtName.getText();
 	            String sex=txtSex.getText();
@@ -121,7 +123,7 @@ public class Update extends JFrame implements ActionListener {
 	            
 	            try {
 				        sqlWrite.updateStudent(num,name,sex,address,phone,major);
-					
+					   
 						JOptionPane.showMessageDialog(null, "修改成功", "提示", JOptionPane.INFORMATION_MESSAGE);
 					
 	            	//sqlRead.createStudent("5yao","yaoyao","female","memeda","13343564","software");

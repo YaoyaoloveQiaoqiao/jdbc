@@ -113,19 +113,21 @@ public class SQL{
 		
 	}
 
-	static void delete() throws SQLException {
+	public void deleteStudent(String num) throws SQLException {
 		Connection conn = null;
-		Statement st = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 
 			conn = jdbcUtils.getConnection();
-			st = conn.createStatement();
-			String sql = "delete from exam_student where score=100";
-			int i = st.executeUpdate(sql);
+			String sql = "delete from student where snum=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, num);
+			
+			int i = ps.executeUpdate();
 			System.out.println("i=" + i);
 		} finally {
-			jdbcUtils.free(rs, st, conn);
+			jdbcUtils.free(rs, ps, conn);
 		}
 	}
 	

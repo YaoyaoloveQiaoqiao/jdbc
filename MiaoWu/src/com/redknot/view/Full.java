@@ -124,5 +124,11 @@ public class Full extends JFrame implements ActionListener {
 			updateMes.setVisible(true);
 			this.setVisible(false);
 		}
+		else if(e.getActionCommand().equals("信息删除")){
+	
+			Delete deleteMes=new Delete("信息刪除");
+			deleteMes.setVisible(true);
+			this.setVisible(false);
+		}
 	}
 }
