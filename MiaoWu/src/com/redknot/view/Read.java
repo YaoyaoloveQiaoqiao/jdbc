@@ -80,8 +80,8 @@ public class Read extends JFrame implements ActionListener {
 		
 
 	}
-
-	@Override
+// memeda
+	@Override//memeda
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
@@ -108,3 +108,4 @@ public class Read extends JFrame implements ActionListener {
 	}
 
 }
+
