@@ -25,12 +25,14 @@ public class Delete extends JFrame implements ActionListener {
 
 	public Delete(String title) {
 		// 设置窗体属性
-		this.setSize(400, 500);
-		this.setLocation(100, 100);
+		this.setSize(600, 500);
+		this.setLocation(400, 200);
 		this.setTitle(title);
 
 		// new一大堆组件
 		JButton btnDelete = new JButton("删除");
+		JButton btnBack=new JButton("返回主页");
+		
 		JLabel labNum = new JLabel("请输入要删除学生学号：");
 		JLabel labName = new JLabel("姓名：");
 		JLabel labSex = new JLabel("性别：");
@@ -40,6 +42,7 @@ public class Delete extends JFrame implements ActionListener {
 		
 		// 注册事件
 		btnDelete.addActionListener(this);
+		btnBack.addActionListener(this);
 
 		
 		JPanel panSmall = new JPanel();
@@ -49,6 +52,7 @@ public class Delete extends JFrame implements ActionListener {
 		panSmall.add(labNum);
 		panSmall.add(txtNum);
 		panSmall.add(btnDelete);
+		panSmall.add(btnBack);
 
 		// 布置窗体
 		this.setLayout(new BorderLayout());
@@ -62,7 +66,12 @@ public class Delete extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals("返回主页")) {
 
+			Welcome welcom = new Welcome();
+			welcom.setVisible(true);
+			this.setVisible(false);
+		}
 		// System.out.println("click");
 		if (e.getActionCommand().equals("删除")) {
             String num=txtNum.getText();

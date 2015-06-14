@@ -30,14 +30,15 @@ public class Update extends JFrame implements ActionListener {
 
 	public Update(String title) {
 		// 设置窗体属性
-		this.setSize(400, 500);
-		this.setLocation(100, 100);
+		this.setSize(670, 500);
+		this.setLocation(400, 200);
 		this.setTitle(title);
 
 		// new一大堆组件
 		JButton btnQuery = new JButton("查询");
+		JButton btnBack=new JButton("返回主页");
 		JButton btnSave = new JButton("保存");
-		JLabel labNum = new JLabel("请输入要修改学生学号：");
+		JLabel labNum = new JLabel("请输入修改学生学号：");
 		JLabel labName = new JLabel("姓名：");
 		JLabel labSex = new JLabel("性别：");
 		JLabel labAddress = new JLabel("地址：");
@@ -47,6 +48,7 @@ public class Update extends JFrame implements ActionListener {
 		// 注册事件
 		btnQuery.addActionListener(this);
 		btnSave.addActionListener(this);
+		btnBack.addActionListener(this);
 
 		// 布置小面板
 		JPanel panInput = new JPanel();
@@ -75,6 +77,7 @@ public class Update extends JFrame implements ActionListener {
 		panSmall.add(txtNum);
 		panSmall.add(btnQuery);
 		panSmall.add(btnSave);
+		panSmall.add(btnBack);
 		
 
 		// 布置窗体
@@ -89,7 +92,12 @@ public class Update extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals("返回主页")) {
 
+			Welcome welcom = new Welcome();
+			welcom.setVisible(true);
+			this.setVisible(false);
+		}
 		// System.out.println("click");
 		if (e.getActionCommand().equals("查询")) {
             String num=txtNum.getText();
